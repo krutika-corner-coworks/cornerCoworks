@@ -143,9 +143,9 @@
   color: #aabbe0
 }
 
-/* Feature-card hover animation: lift, glow and icon pop. */
+/* Feature-card hover animation: glow and icon pop. */
 .feature-card {
-  transition: transform .35s cubic-bezier(.22, .61, .36, 1), box-shadow .35s cubic-bezier(.22, .61, .36, 1), background-color .35s
+  transition: box-shadow .35s cubic-bezier(.22, .61, .36, 1), background-color .35s
 }
 
 .feature-card>svg {
@@ -161,16 +161,16 @@
 }
 
 .feature-card:hover {
-  transform: translateY(-8px);
+  z-index: 1;
   box-shadow: 0 24px 48px rgba(7, 27, 80, .14), 0 6px 18px rgba(7, 27, 80, .08)
 }
 
-.feature-card:hover>svg {
+.feature-card:hover .card-front>svg {
   transform: scale(1.18) rotate(-6deg);
   color: var(--brand-orange)
 }
 
-.feature-card:first-child:hover>svg {
+.feature-card:first-child:hover .card-front>svg {
   color: #ff9a4a
 }
 
@@ -1405,13 +1405,14 @@ html {
 @media(prefers-reduced-motion:reduce) {
 
   .feature-card,
-  .feature-card>svg,
+  .feature-card-inner,
+  .card-front>svg,
   .feature-card .feature-number,
   .feature-card .feature-foot {
     transition: none
   }
 
-  .feature-card:hover {
+  .feature-card:hover .feature-card-inner {
     transform: none
   }
 }

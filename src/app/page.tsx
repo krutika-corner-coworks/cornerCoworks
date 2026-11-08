@@ -37,7 +37,7 @@ export default function Home() {
         <HeroBackground />
         {/* <div className="hero-ambient" aria-hidden="true" /> */}
         <div className="hero-content hero-waitlist">
-          <Image className="hero-logo" src="/images/logo-color.png" alt="Corner Coworks" width={150} height={49} priority />
+          <Image className="hero-logo" src="/images/logo-white-color.png" alt="Corner Coworks" width={150} height={49} priority unoptimized />
           <div className="eyebrow hero-label"><span className="live-dot" /> A MINI TECHPARK</div>
           <h1>Coming <em>soon!</em></h1>
           <p className="hero-description">{tagline}.</p>
@@ -58,7 +58,7 @@ export default function Home() {
         <section className="intro-section section-pad" id="vision">
         <div className="section-kicker">01 / THE VISION</div>
         <div className="intro-grid">
-          <h2>Flexibility is the<br /><em>new flex.</em></h2>
+          <h2>Not another<br />coworking space.<br /><em>A Mini Tech Park.</em></h2>
           <div className="intro-copy">
             <p className="lead">A thoughtfully envisioned business destination built around the way the world works today — and where it is headed tomorrow.</p>
             <p>From growing enterprises to individual business heroes, the vision is to create an environment where ambition and opportunity meets the flexibility of modern office spaces.</p>
@@ -73,7 +73,7 @@ export default function Home() {
         <section className="highlights-section section-pad" id="highlights">
         <div className="section-kicker">02 / THE OPPORTUNITY</div>
         <div className="section-heading-row">
-          <h2>Space to think.<br /><em>Room to grow.</em></h2>
+          <h2>Flexibility is the<br /><em>new flex.</em></h2>
           <div className="intro-copy">
           <p className="lead">A place to enhance business ROI, along with &apos;Return on Impression&apos;.</p>
           <p>For passionate professionals to prudent entrpreneurs, be at the top of your business profitability. Every &apos;office hour&apos; invested is an opportunity to grow and collaborate..</p>
@@ -81,31 +81,37 @@ export default function Home() {
         </div>
         <div className="feature-grid">
           <article className="feature-card feature-large">
-            <div className="card-front">
-              <div className="feature-number">01</div><Building2 size={25} />
-              <h3>Workspaces<br />with purpose</h3>
-              <p>Planned commercial environments designed to support the needs of modern businesses.</p>
-              <span className="feature-foot">COMMERCIAL WORKSPACES</span>
+            <div className="feature-card-inner">
+              <div className="card-front">
+                <div className="feature-number">01</div><Building2 size={25} />
+                <h3>Workspaces<br />with purpose</h3>
+                <p>Planned commercial environments designed to support the needs of modern businesses.</p>
+                <span className="feature-foot">COMMERCIAL WORKSPACES</span>
+              </div>
+              <div className="card-back"><Image src="/images/WWAP.png" alt="Modern commercial workspace with purposeful layout" width={400} height={300} /></div>
             </div>
-            <div className="card-back"><Image src="/images/WWAP.png" alt="Modern commercial workspace with purposeful layout" width={400} height={300} /></div>
           </article>
           <article className="feature-card">
-            <div className="card-front">
-              <div className="feature-number">02</div><Sparkles size={25} />
-              <h3>Flexibility<br />enhanced</h3>
-              <p>For businesses with flexible needs, choose to subscribe, than lease.</p>
-              <span className="feature-foot">BUILT FOR CONNECTION</span>
+            <div className="feature-card-inner">
+              <div className="card-front">
+                <div className="feature-number">02</div><Sparkles size={25} />
+                <h3>Flexibility<br />enhanced</h3>
+                <p>For businesses with flexible needs, choose to subscribe, than lease.</p>
+                <span className="feature-foot">BUILT FOR CONNECTION</span>
+              </div>
+              <div className="card-back"><Image src="/images/FE.png" alt="Flexible coworking space with collaborative seating" width={400} height={300} /></div>
             </div>
-            <div className="card-back"><Image src="/images/FE.png" alt="Flexible coworking space with collaborative seating" width={400} height={300} /></div>
           </article>
           <article className="feature-card">
-            <div className="card-front">
-              <div className="feature-number">03</div><ShieldCheck size={25} />
-              <h3>Infrastructure<br />for tomorrow</h3>
-              <p>Planned for businnesses striving in changing business landscape.</p>
-              <span className="feature-foot">FUTURE FOCUSED</span>
+            <div className="feature-card-inner">
+              <div className="card-front">
+                <div className="feature-number">03</div><ShieldCheck size={25} />
+                <h3>Infrastructure<br />for tomorrow</h3>
+                <p>Planned for businnesses striving in changing business landscape.</p>
+                <span className="feature-foot">FUTURE FOCUSED</span>
+              </div>
+              <div className="card-back"><Image src="/images/IFT.png" alt="Future-ready office infrastructure and meeting rooms" width={400} height={300} /></div>
             </div>
-            <div className="card-back"><Image src="/images/IFT.png" alt="Future-ready office infrastructure and meeting rooms" width={400} height={300} /></div>
           </article>
         </div>
         <div className="amenity-strip">

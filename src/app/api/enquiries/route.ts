@@ -158,6 +158,9 @@ export async function POST(request: NextRequest) {
     const { error: dbError } = await supabase.from("enquiries").insert(lead);
     if (dbError) {
       console.error("Supabase insert failed:", dbError.message);
+      if (dbError.message.toLowerCase().includes("invalid api key")) {
+        return NextResponse.json({ error: "Supabase rejected the API key. Set SUPABASE_SERVICE_ROLE_KEY to a server-side key from the same project as SUPABASE_URL." }, { status: 503 });
+      }
       if (dbError.message.toLowerCase().includes("fetch failed")) {
         return NextResponse.json({ error: "The enquiry service cannot reach Supabase. Check the Project URL and network connection." }, { status: 503 });
       }
