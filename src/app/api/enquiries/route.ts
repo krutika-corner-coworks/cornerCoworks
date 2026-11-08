@@ -8,7 +8,11 @@ const enquirySchema = z.object({
   name: z.string().trim().min(2).max(100),
   phone: z.string().trim().min(8).max(20),
   email: z.email().max(254),
-  interest: z.enum(["Office space", "Investment opportunity", "Business partnership", "Other"]),
+  interest: z.enum([
+    "Office space",
+    "Flexible Plans",
+    "NewsLetter"
+  ]),
   message: z.string().trim().max(1500).optional().default(""),
   consent: z.literal("yes"),
   website: z.string().optional().default(""),
@@ -138,12 +142,25 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "The enquiry service is not configured yet. Please contact the website administrator." }, { status: 503 });
     }
 
+    let supabaseHost: string;
+    try {
+      supabaseHost = new URL(supabaseUrl).hostname;
+    } catch {
+      return NextResponse.json({ error: "The Supabase project URL is invalid. Check the server configuration." }, { status: 503 });
+    }
+    if (supabaseHost === "supabase.com" || supabaseHost === "app.supabase.com") {
+      return NextResponse.json({ error: "Set SUPABASE_URL to the Project URL from Supabase Project Settings > API, not the dashboard URL." }, { status: 503 });
+    }
+
     const supabase = createClient(supabaseUrl, supabaseKey, {
       auth: { persistSession: false, autoRefreshToken: false },
     });
     const { error: dbError } = await supabase.from("enquiries").insert(lead);
     if (dbError) {
       console.error("Supabase insert failed:", dbError.message);
+      if (dbError.message.toLowerCase().includes("fetch failed")) {
+        return NextResponse.json({ error: "The enquiry service cannot reach Supabase. Check the Project URL and network connection." }, { status: 503 });
+      }
       return NextResponse.json({ error: "We couldn't save your enquiry right now. Please try again shortly." }, { status: 500 });
     }
 
