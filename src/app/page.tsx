@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowDown, Building2, Coffee, MapPin, Monitor, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowDown, Building2, Coffee, MapPin, Megaphone, Monitor, ShieldCheck, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { EnquiryForm } from "@/components/enquiry-form";
 import { Reveal } from "@/components/reveal";
@@ -84,8 +84,8 @@ export default function Home() {
             <div className="feature-card-inner">
               <div className="card-front">
                 <div className="feature-number">01</div><Building2 size={25} />
-                <h3>Workspaces<br />with purpose</h3>
-                <p>Planned commercial environments designed to support the needs of modern businesses.</p>
+                <h3>Premium Workspaces</h3>
+                <p>Enterprise-ready workspaces designed for productivity, flexibility and professional growth.</p>
                 <span className="feature-foot">COMMERCIAL WORKSPACES</span>
               </div>
               <div className="card-back"><Image src="/images/WWAP.png" alt="Modern commercial workspace with purposeful layout" width={400} height={300} /></div>
@@ -95,8 +95,8 @@ export default function Home() {
             <div className="feature-card-inner">
               <div className="card-front">
                 <div className="feature-number">02</div><Sparkles size={25} />
-                <h3>Flexibility<br />enhanced</h3>
-                <p>For businesses with flexible needs, choose to subscribe, than lease.</p>
+                <h3>Professional Community</h3>
+                <p>A thriving network of founders, freelancers and businesses connecting ideas with opportunities.</p>
                 <span className="feature-foot">BUILT FOR CONNECTION</span>
               </div>
               <div className="card-back"><Image src="/images/FE.png" alt="Flexible coworking space with collaborative seating" width={400} height={300} /></div>
@@ -106,8 +106,8 @@ export default function Home() {
             <div className="feature-card-inner">
               <div className="card-front">
                 <div className="feature-number">03</div><ShieldCheck size={25} />
-                <h3>Infrastructure<br />for tomorrow</h3>
-                <p>Planned for businnesses striving in changing business landscape.</p>
+                <h3>Visibility & Growth</h3>
+                <p>Amplifying your professional presence through stories, media exposure, meaningful collaborations and shared opportunities.</p>
                 <span className="feature-foot">FUTURE FOCUSED</span>
               </div>
               <div className="card-back"><Image src="/images/IFT.png" alt="Future-ready office infrastructure and meeting rooms" width={400} height={300} /></div>
@@ -115,9 +115,9 @@ export default function Home() {
           </article>
         </div>
         <div className="amenity-strip">
-          <span><Monitor size={17} /> Work-ready setup</span>
-          <span><Coffee size={17} /> Coffee & conversations</span>
-          <span><ShieldCheck size={17} /> Thoughtful environment</span>
+          <span><Monitor size={17} /> Work Beyond Desks</span>
+          <span><Coffee size={17} /> Connect Collaborate Grow</span>
+          <span><ShieldCheck size={17} /> Be Seen Grow Beyond</span>
         </div>
         </section>
       </Reveal>
