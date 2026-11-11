@@ -60,7 +60,7 @@ export default function Home() {
         <div className="intro-grid">
           <h2>Not another<br />coworking space.<br /><em>A Mini Tech Park.</em></h2>
           <div className="intro-copy">
-            <p className="lead">A thoughtfully envisioned business destination built around the way the world works today — and where it is headed tomorrow.</p>
+            <p className="lead">A thoughtfully envisioned business destination built around the way the world is headed tomorrow.</p>
             <p>From growing enterprises to individual business heroes, the vision is to create an environment where ambition and opportunity meets the flexibility of modern office spaces.</p>
             <a className="underlined-link" href="#enquire">Be among the first to know <ArrowRight size={16} /></a>
           </div>
@@ -75,8 +75,8 @@ export default function Home() {
         <div className="section-heading-row">
           <h2>Flexibility is the<br /><em>new flex.</em></h2>
           <div className="intro-copy">
-          <p className="lead">A place to enhance business ROI, along with &apos;Return on Impression&apos;.</p>
-          <p>For passionate professionals to prudent entrpreneurs, be at the top of your business profitability. Every &apos;office hour&apos; invested is an opportunity to grow and collaborate..</p>
+          <p className="lead">Great Work Deserves Greater Visibility.</p>
+          <p>Every &apos;office hour&apos; invested is an opportunity to grow and collaborate.<br/>A place to enhance business ROI, along with &apos;Return on Impression&apos;. </p>
           </div>
         </div>
         <div className="feature-grid">
@@ -160,8 +160,8 @@ export default function Home() {
         <section className="enquiry-section section-pad" id="enquire">
         <div className="enquiry-copy">
           <div className="section-kicker">04 / FIRST ACCESS</div>
-          <h2>Be part of<br /><em>what&apos;s next.</em></h2>
-          <p>Get project updates, availability information and launch announcements directly from our team.</p>
+          <h2>Don&apos;t join <span>Corner CoWorks</span><br /> <em>just for a place to work.</em></h2>
+          <p>You join to become part of something bigger.</p>
           <div className="enquiry-note"><span className="live-dot" /> REGISTER YOUR INTEREST</div>
         </div>
         <div className="form-panel">

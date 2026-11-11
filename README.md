@@ -6,7 +6,7 @@ A responsive, cinematic coming-soon landing page for a Tech Park / commercial re
 
 - Full-screen muted looping construction-video hero
 - Responsive sections for project vision, highlights and location
-- Enquiry form with validation and consent
+- Enquiry form with validation and explicit consent tracking when provided
 - Server-side IP capture and optional approximate IP-based location
 - Supabase lead storage
 - Email notification through Resend

@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 import { ArrowRight, CheckCircle2, LoaderCircle } from "lucide-react";
 
 type FormState = "idle" | "loading" | "success" | "error";
-type FieldName = "firstName" | "lastName" | "phone" | "email" | "interest" | "consent";
+type FieldName = "firstName" | "lastName" | "phone" | "email";
 
 function FieldError({ id, message }: { id: string; message?: string }) {
   return message ? <p className="field-error" id={id} role="alert">{message}</p> : null;
@@ -32,7 +32,6 @@ export function EnquiryForm() {
     const lastName = String(formData.get("lastName") ?? "").trim();
     const phone = String(formData.get("phone") ?? "").trim();
     const email = String(formData.get("email") ?? "").trim();
-    const interest = String(formData.get("interest") ?? "");
     const validationErrors: Partial<Record<FieldName, string>> = {};
 
     if (!firstName) validationErrors.firstName = "Enter your first name.";
@@ -40,9 +39,6 @@ export function EnquiryForm() {
     if (phone.length < 8 || phone.length > 20) validationErrors.phone = "Enter a phone number between 8 and 20 characters.";
     if (!email) validationErrors.email = "Enter your email address.";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) validationErrors.email = "Enter a valid email address.";
-    if (!interest) validationErrors.interest = "Select what you are interested in.";
-    if (formData.get("consent") !== "yes") validationErrors.consent = "Please agree before submitting.";
-
     setErrors(validationErrors);
     setMessage("");
     if (Object.keys(validationErrors).length) {
@@ -63,6 +59,9 @@ export function EnquiryForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
+      if (!response.headers.get("content-type")?.includes("application/json")) {
+        throw new Error("The enquiry service is temporarily unavailable. Please try again or contact the website administrator.");
+      }
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "We couldn't submit your enquiry. Please try again.");
       setStatus("success");
@@ -81,20 +80,20 @@ export function EnquiryForm() {
         <label><span className="field-label">Mobile number <span className="required-asterisk">*</span></span><input name="phone" type="tel" placeholder="+91 98765 43210" autoComplete="tel" required minLength={8} maxLength={20} aria-invalid={Boolean(errors.phone)} aria-describedby={errors.phone ? "phone-error" : undefined} onChange={() => clearError("phone")} /><FieldError id="phone-error" message={errors.phone} /></label>
         <label><span className="field-label">Your E-mail Address <span className="required-asterisk">*</span></span><input name="email" type="email" placeholder="you@company.com" autoComplete="email" required maxLength={254} aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "email-error" : undefined} onChange={() => clearError("email")} /><FieldError id="email-error" message={errors.email} /></label>
       </div>
-      <label><span className="field-label">I am interested in <span className="required-asterisk">*</span></span>
+      {/* <label><span className="field-label">I am interested in <span className="required-asterisk">*</span></span>
         <select name="interest" required defaultValue="" aria-invalid={Boolean(errors.interest)} aria-describedby={errors.interest ? "interest-error" : undefined} onChange={() => clearError("interest")}>
           <option value="" disabled>Select your interest</option>
-          <option value="Office space">Office space</option>
-          <option value="Flexible Plans">Flexible Plans</option>
+          <option value="Subscription Plans">Subscription Plans</option>
           <option value="NewsLetter">NewsLetter</option>
+          <option value="Office space">Office space</option>
         </select>
         <FieldError id="interest-error" message={errors.interest} />
-      </label>
-      <label>Leave Your Message <small>(Optional)</small><textarea name="message" placeholder="Tell us a little about what you are looking for..." rows={4} maxLength={1500} /></label>
-      <div className="consent-field"><div className="consent-row"><input type="checkbox" id="consent" name="consent" value="yes" required aria-invalid={Boolean(errors.consent)} aria-describedby={errors.consent ? "consent-error" : undefined} onChange={() => clearError("consent")} /><label htmlFor="consent">I agree to be contacted about this project and accept the privacy notice.</label></div><FieldError id="consent-error" message={errors.consent} /></div>
-      <div className="honeypot" aria-hidden="true"><label>Leave this field empty<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
+      </label> */}
+      {/* <label>Leave Your Message <small>(Optional)</small><textarea name="message" placeholder="Tell us a little about what you are looking for..." rows={4} maxLength={1500} /></label> */}
+      {/* <div className="consent-field"><div className="consent-row"><input type="checkbox" id="consent" name="consent" value="yes" required aria-invalid={Boolean(errors.consent)} aria-describedby={errors.consent ? "consent-error" : undefined} onChange={() => clearError("consent")} /><label htmlFor="consent">I agree to be contacted about this project and accept the privacy notice.</label></div><FieldError id="consent-error" message={errors.consent} /></div>
+      <div className="honeypot" aria-hidden="true"><label>Leave this field empty<input name="website" tabIndex={-1} autoComplete="off" /></label></div> */}
       <button className="button button-submit" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? <>Submitting <LoaderCircle className="spin" size={17} /></> : <>Submit enquiry <ArrowRight size={17} /></>}
+        {status === "loading" ? <>Submitting <LoaderCircle className="spin" size={17} /></> : <>Know more about Corner CoWorks<ArrowRight size={17} /></>}
       </button>
       {message && <div className={`form-message ${status}`} role="status">{status === "success" && <CheckCircle2 size={18} />}{message}</div>}
       <p className="form-privacy">Your information is kept confidential and used only to respond to your enquiry.</p>

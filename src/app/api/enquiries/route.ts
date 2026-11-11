@@ -8,13 +8,9 @@ const enquirySchema = z.object({
   name: z.string().trim().min(2).max(100),
   phone: z.string().trim().min(8).max(20),
   email: z.email().max(254),
-  interest: z.enum([
-    "Office space",
-    "Flexible Plans",
-    "NewsLetter"
-  ]),
+  interest: z.string().trim().min(1).max(100).optional().default("General enquiry"),
   message: z.string().trim().max(1500).optional().default(""),
-  consent: z.literal("yes"),
+  consent: z.literal("yes").optional(),
   website: z.string().optional().default(""),
 });
 
@@ -133,7 +129,7 @@ export async function POST(request: NextRequest) {
       ip_address: ip,
       ip_location: ipLocation,
       created_at: createdAt,
-      consent: true,
+      consent: parsed.data.consent === "yes",
     };
 
     const supabaseUrl = process.env.SUPABASE_URL;

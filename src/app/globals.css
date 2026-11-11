@@ -363,8 +363,18 @@ h2 {
     color: #777970
 }
 
+.enquiry-copy>h2 {
+    font-size: 40px;
+}
+
+.enquiry-copy>h2 {
+    span{
+        color: #ff6b00;
+    }
+}
+
 .intro-copy .lead {
-    font-size: 19px;
+    font-size: 24px !important;
     line-height: 1.65;
     color: #292c26;
     margin: 0 0 20px
